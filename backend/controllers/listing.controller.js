@@ -7,7 +7,7 @@ import User from "../model/user.model.js";
 export const addListing = async (req,res) => {
     try {
         let host = req.userId;
-        let {title,description,rent,city,landMark,category} = req.body
+        let {title,description,ameneties,rent,city,landMark,category} = req.body
         let image1 = await uploadOnCloudinary(req.files.image1[0].path)
         let image2 = await uploadOnCloudinary(req.files.image2[0].path)
         let image3 = await uploadOnCloudinary(req.files.image3[0].path)
@@ -15,6 +15,7 @@ export const addListing = async (req,res) => {
         let listing = await Listing.create({
             title,
             description,
+            ameneties,
             rent,
             city,
             landMark,
@@ -66,7 +67,7 @@ export const updateListing = async (req,res) => {
         let image2;
         let image3;
         let {id} = req.params;
-        let {title,description,rent,city,landMark,category} = req.body
+        let {title,description,ameneties,rent,city,landMark,category} = req.body
         if(req.files.image1){
         image1 = await uploadOnCloudinary(req.files.image1[0].path)}
         if(req.files.image2)
@@ -77,6 +78,7 @@ export const updateListing = async (req,res) => {
         let listing = await Listing.findByIdAndUpdate(id,{
             title,
             description,
+            ameneties,
             rent,
             city,
             landMark,

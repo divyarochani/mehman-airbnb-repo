@@ -3,7 +3,7 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
 import { GiFamilyHouse } from "react-icons/gi";
 import { MdBedroomParent } from "react-icons/md";
-
+import { FaHome } from "react-icons/fa";
 import { MdOutlinePool } from "react-icons/md";
 import { GiWoodCabin } from "react-icons/gi";
 import { SiHomeassistantcommunitystore } from "react-icons/si";
@@ -41,24 +41,20 @@ function ListingPage2() {
             <MdOutlinePool className='w-[30px] h-[30px] text-[black]' /><h3>Pool House</h3>
             </div>
 
-            <div className={`w-[180px] h-[100px] flex justify-center items-center flex-col cursor-pointer border-[2px] hover:border-[#a6a5a5] text-[16px] rounded-lg ${category == "rooms" ?"border-3 border-[#8b8b8b]" : ""}`} onClick={()=>setCategory("rooms")}>
-            <MdBedroomParent className='w-[30px] h-[30px] text-[black]' /><h3>Rooms</h3>
-            </div>
+            
 
             <div className={`w-[180px] h-[100px] flex justify-center items-center flex-col cursor-pointer border-[2px] hover:border-[#a6a5a5] text-[16px] rounded-lg ${category == "flat" ?"border-3 border-[#8b8b8b]" : ""}`}onClick={()=>setCategory("flat")}>
             <BiBuildingHouse className='w-[30px] h-[30px] text-[black]' /><h3>Flat</h3>
             </div>
 
-            <div className={`w-[180px] h-[100px] flex justify-center items-center flex-col cursor-pointer border-[2px] hover:border-[#a6a5a5] text-[16px] rounded-lg ${category == "pg" ?"border-3 border-[#8b8b8b]" : ""}`} onClick={()=>setCategory("pg")}>
-            <IoBedOutline className='w-[30px] h-[30px] text-[black]' /><h3>PG</h3>
-            </div>
+            
 
             <div className={`w-[180px] h-[100px] flex justify-center items-center flex-col cursor-pointer border-[2px] hover:border-[#a6a5a5] text-[16px] rounded-lg ${category == "cabin" ?"border-3 border-[#8b8b8b]" : ""}`} onClick={()=>setCategory("cabin")}>
             <GiWoodCabin className='w-[30px] h-[30px] text-[black]' /><h3>Cabin</h3>
             </div>
 
-            <div className={`w-[180px] h-[100px] flex justify-center items-center flex-col cursor-pointer border-[2px] hover:border-[#a6a5a5] text-[16px] rounded-lg ${category == "shops" ?"border-3 border-[#8b8b8b]" : ""}`} onClick={()=>setCategory("shops")}>
-            <SiHomeassistantcommunitystore className='w-[30px] h-[30px] text-[black]' /><h3>Shops</h3>
+            <div className={`w-[180px] h-[100px] flex justify-center items-center flex-col cursor-pointer border-[2px] hover:border-[#a6a5a5] text-[16px] rounded-lg ${category == "homes" ?"border-3 border-[#8b8b8b]" : ""}`} onClick={()=>setCategory("homes")}>
+            <FaHome className='w-[30px] h-[30px] text-black' /><h3>Homes</h3>
             </div>
 
             

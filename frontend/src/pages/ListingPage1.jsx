@@ -7,12 +7,15 @@ function ListingPage1() {
    let navigate = useNavigate()
    let {title,setTitle,
     description,setDescription,
+    ameneties,setAmenities,
     frontEndImage1,setFrontEndImage1,
     frontEndImage2,setFrontEndImage2,
     frontEndImage3,setFrontEndImage3,
+   
     backEndImage1,setBackEndImage1,
     backEndImage2,setBackEndImage2,
     backEndImage3,setBackEndImage3,
+    
     rent,setRent,
     city,setCity,
     landmark,setLandmark,
@@ -34,6 +37,7 @@ function ListingPage1() {
         setBackEndImage3(file)
         setFrontEndImage3(URL.createObjectURL(file))
     }
+    
   return (
     <div className='w-[100%] h-[100vh] bg-white flex items-center justify-center relative overflow-auto'>
 
@@ -54,6 +58,18 @@ function ListingPage1() {
               <textarea name="" id="des" className='w-[90%] h-[80px] border-[2px] border-[#555656] rounded-lg text-[18px] px-[20px]' required onChange={(e)=>setDescription(e.target.value)} value={description} ></textarea>
             </div> 
 
+            <div className='w-[90%] flex items-start justify-start flex-col gap-[10px]'>
+  <label htmlFor="amenities" className='text-[20px]'>Amenities</label>
+  <textarea
+    id="amenities"
+    className='w-[90%] h-[80px] border-[2px] border-[#555656] rounded-lg text-[18px] px-[20px]'
+    required
+    onChange={(e) => setAmenities(e.target.value)}
+    value={ameneties}
+    
+  />
+</div>
+
             <div className='w-[90%] flex items-start justify-center flex-col gap-[10px]'>
               <label htmlFor="img1" className='text-[20px]'>Image1</label>
               <div className='flex items-center justify-start  w-[90%] h-[40px] border-[#555656] border-2 rounded-[10px] '><input type="file" id='img1' className='w-[100%] text-[15px] px-[10px] ' required onChange={handleImage1}/>
@@ -71,6 +87,8 @@ function ListingPage1() {
               <div className='flex items-center justify-start  w-[90%] h-[40px] border-[#555656] border-2 rounded-[10px]'><input type="file" id='img3' className='w-[100%] text-[15px] px-[10px] ' required  onChange={handleImage3}/>
               </div>
             </div> 
+
+           
 
             <div className='w-[90%] flex items-start justify-start flex-col gap-[10px]'>
               <label htmlFor="rent" className='text-[20px]'>Rent</label>

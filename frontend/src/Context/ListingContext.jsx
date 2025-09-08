@@ -10,12 +10,15 @@ function ListingContext({children}) {
     let navigate = useNavigate() 
     let [title,setTitle] = useState("")
     let [description,setDescription]=useState("")
+    let[ameneties,setAmenities]=useState("")
     let [frontEndImage1,setFrontEndImage1]=useState(null)
     let [frontEndImage2,setFrontEndImage2]=useState(null)
     let [frontEndImage3,setFrontEndImage3]=useState(null)
+    let [frontEndImage4,setFrontEndImage4]=useState(null)
     let [backEndImage1,setBackEndImage1]=useState(null)
     let [backEndImage2,setBackEndImage2]=useState(null)
     let [backEndImage3,setBackEndImage3]=useState(null)
+    let [backEndImage4,setBackEndImage4]=useState(null)
     let [rent,setRent]=useState("")
     let [city,setCity]=useState("")
     let [landmark,setLandmark]=useState("")
@@ -41,7 +44,9 @@ function ListingContext({children}) {
      formData.append("image1",backEndImage1)
      formData.append("image2",backEndImage2)
      formData.append("image3",backEndImage3)
+     formData.append("image4",backEndImage4)
      formData.append("description",description)
+     formData.append("ameneties",ameneties)
      formData.append("rent",rent)
      formData.append("city",city)
      formData.append("landMark",landmark)
@@ -54,12 +59,15 @@ function ListingContext({children}) {
         toast.success("AddListing Successfully")
         setTitle("")
         setDescription("")
+        setAmenities("")
        setFrontEndImage1(null)
        setFrontEndImage2(null)
        setFrontEndImage3(null)
+       setFrontEndImage4(null)
        setBackEndImage1(null)
        setBackEndImage2(null)
        setBackEndImage3(null)
+       setBackEndImage4(null)
        setRent("")
        setCity("")
        setLandmark("")
@@ -84,16 +92,21 @@ function ListingContext({children}) {
         
      }
      const handleSearch = async (data) => {
-        try {
-            let result = await axios.get(serverUrl + `/api/listing/search?query=${data}`)
-            setSearchData(result.data)
-        } catch (error) {
-            setSearchData(null)
-            console.log(error)
-            
+    try {
+        if (!data || data.trim() === "") {
+            console.log("Search query is empty. Skipping request.");
+            setSearchData(null);
+            return;
         }
-        
-     }
+
+        let result = await axios.get(serverUrl + `/api/listing/search?query=${encodeURIComponent(data.trim())}`);
+        setSearchData(result.data);
+    } catch (error) {
+        setSearchData(null);
+        console.log(error);
+    }
+}
+
 
      const getListing = async () => {
         try {
@@ -116,12 +129,15 @@ function ListingContext({children}) {
     let value={
         title,setTitle,
         description,setDescription,
+        ameneties,setAmenities,
         frontEndImage1,setFrontEndImage1,
         frontEndImage2,setFrontEndImage2,
         frontEndImage3,setFrontEndImage3,
+        
         backEndImage1,setBackEndImage1,
         backEndImage2,setBackEndImage2,
         backEndImage3,setBackEndImage3,
+        
         rent,setRent,
         city,setCity,
         landmark,setLandmark,

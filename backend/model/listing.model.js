@@ -10,6 +10,10 @@ const listingSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    ameneties:{
+        type:String,
+        required:true
+    },
     host:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"User",

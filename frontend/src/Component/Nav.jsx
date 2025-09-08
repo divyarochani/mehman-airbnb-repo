@@ -8,11 +8,12 @@ import { GiFamilyHouse } from "react-icons/gi";
 import { MdBedroomParent } from "react-icons/md";
 import { MdOutlinePool } from "react-icons/md";
 import { GiWoodCabin } from "react-icons/gi";
-import { SiHomeassistantcommunitystore } from "react-icons/si";
+import { FaHome } from "react-icons/fa";
+
 import { IoBedOutline } from "react-icons/io5";
 import { FaK, FaTreeCity } from "react-icons/fa6";
 import { BiBuildingHouse } from "react-icons/bi";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { authDataContext } from '../Context/AuthContext';
 import axios from 'axios';
 import { userDataContext } from '../Context/UserContext';
@@ -63,7 +64,8 @@ function Nav() {
 
         <div className='fixed top-0 bg-[white] z-[20]'>
             <div className='w-[100vw] min-h-[80px]  border-b-[1px] border-[#dcdcdc] px-[20px] flex items-center justify-between md:px-[40px] '>
-                <div><img src={logo} alt="" className='w-[130px]' /></div>
+                <div>
+                    <img src={logo} alt="" className='w-[130px] cursor-pointer' /></div>
 
                 <div className='w-[35%] relative hidden md:block '>
                     <input type="text" className='w-[100%] px-[30px] py-[10px] border-[2px] border-[#bdbaba] outline-none overflow-auto rounded-[30px] text-[17px]' placeholder='Any Where  |  Any Location  |  Any City 'onChange={(e)=>setInput(e.target.value)} value={input}/>
@@ -141,11 +143,7 @@ function Nav() {
 
                 </div>
 
-                <div className={`flex items-center justify-center flex-col hover:border-b-[1px] border-[#a6a5a5] text-[13px] ${cate=="rooms"?"border-b-[1px] border-[#a6a5a5]":""}`} onClick={()=>handleCategory("rooms")}>
-                    <MdBedroomParent className='w-[30px] h-[30px] text-black' />
-                    <h3>Rooms</h3>
-
-                </div>
+                
 
                 <div className={`flex items-center justify-center flex-col hover:border-b-[1px] border-[#a6a5a5] text-[13px] ${cate=="flat"?"border-b-[1px] border-[#a6a5a5]":""}`} onClick={()=>handleCategory("flat")}>
                     <BiBuildingHouse className='w-[30px] h-[30px] text-black' />
@@ -153,11 +151,6 @@ function Nav() {
 
                 </div>
 
-                <div className={`flex items-center justify-center flex-col hover:border-b-[1px] border-[#a6a5a5] text-[13px] ${cate=="pg"?"border-b-[1px] border-[#a6a5a5]":""}`} onClick={()=>handleCategory("pg")}>
-                    <IoBedOutline className='w-[30px] h-[30px] text-black' />
-                    <h3>PG</h3>
-
-                </div>
 
                 <div className={`flex items-center justify-center flex-col hover:border-b-[1px] border-[#a6a5a5] text-[13px] ${cate=="cabin"?"border-b-[1px] border-[#a6a5a5]":""}`} onClick={()=>handleCategory("cabin")}>
                     <GiWoodCabin className='w-[30px] h-[30px] text-black' />
@@ -165,9 +158,9 @@ function Nav() {
 
                 </div>
 
-                <div className={`flex items-center justify-center flex-col hover:border-b-[1px] border-[#a6a5a5] text-[13px] ${cate=="shops"?"border-b-[1px] border-[#a6a5a5]":""}`} onClick={()=>handleCategory("shops")}>
-                    <SiHomeassistantcommunitystore className='w-[30px] h-[30px] text-black' />
-                    <h3>Shops</h3>
+                <div className={`flex items-center justify-center flex-col hover:border-b-[1px] border-[#a6a5a5] text-[13px] ${cate=="homes"?"border-b-[1px] border-[#a6a5a5]":""}`} onClick={()=>handleCategory("homes")}>
+                    <FaHome className='w-[30px] h-[30px] text-black' />
+                    <h3>Homes</h3>
 
                 </div>
 

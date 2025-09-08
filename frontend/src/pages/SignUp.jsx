@@ -40,7 +40,7 @@
 //             console.log(error)
 //             toast.error("Somethings went wrong")
 //         }
-        
+
 //     }
 //   return (
 //     <div className='w-[100vw] h-[100vh] flex items-center justify-center relative'>
@@ -65,7 +65,7 @@
 //           <p className='text-[18px]'>Already have a account? <span className='text-[19px] text-[red] cursor-pointer' onClick={()=>navigate("/login")}>Login</span>
 //           </p>
 //         </form>
-     
+
 //     </div>
 //   )
 // }
@@ -73,16 +73,16 @@
 // export default SignUp
 
 import React, { useContext, useState } from 'react';
-import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 import { FaArrowLeftLong } from 'react-icons/fa6';
 import axios from 'axios';
 import { authDataContext } from '../Context/AuthContext';
 import { userDataContext } from '../Context/UserContext';
 import { toast } from 'react-toastify';
+import img1 from '../assets/airbnb-4.jpg'
+
 
 function SignUp() {
-  // const [show, setShow] = useState(false);
   const navigate = useNavigate();
   const { serverUrl, loading, setLoading } = useContext(authDataContext);
   const { setUserData } = useContext(userDataContext);
@@ -109,90 +109,112 @@ function SignUp() {
   };
 
   return (
-    <div className="w-full h-screen bg-gray-100 flex items-center justify-center relative px-4">
-      {/* Back Button */}
-      <div
-        className="absolute top-6 left-6 bg-red-500 hover:bg-red-600 text-white p-3 rounded-full cursor-pointer"
-        onClick={() => navigate("/")}
-      >
-        <FaArrowLeftLong className="w-5 h-5" />
+    <div className="w-full h-screen relative overflow-hidden">
+      {/* Blurred Background Image */}
+      <div className="absolute inset-0 z-[-1] scale-105">
+        {/* Background Image with Blur */}
+        <div
+          style={{
+            backgroundImage: `url(${img1})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            filter: 'blur(1px)',
+            width: '100%',
+            height: '100%',
+            position: 'absolute',
+          }}
+        ></div>
+
+        {/* Bluish Overlay with Opacity */}
+        <div
+          style={{
+            backgroundColor: 'rgba(60, 90, 150, 0.2)',
+            width: '100%',
+            height: '100%',
+            position: 'absolute',
+          }}
+        ></div>
       </div>
 
-      {/* Signup Card */}
-      <form
-        onSubmit={handleSignUP}
-        className="bg-white w-full max-w-md rounded-xl shadow-lg p-8 flex flex-col gap-6"
-      >
-        <h2 className="text-2xl font-semibold text-gray-800 text-center">
-          Create Your Mehman Account
-        </h2>
-
-        {/* Username */}
-        <div className="flex flex-col gap-2">
-          <label htmlFor="name" className="text-gray-700 text-lg">Username</label>
-          <input
-            type="text"
-            id="name"
-            className="w-full border border-gray-400 rounded-md px-4 py-2 text-base focus:outline-none focus:border-red-500"
-            required
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-
-        {/* Email */}
-        <div className="flex flex-col gap-2">
-          <label htmlFor="email" className="text-gray-700 text-lg">Email</label>
-          <input
-            type="email"
-            id="email"
-            className="w-full border border-gray-400 rounded-md px-4 py-2 text-base focus:outline-none focus:border-red-500"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-
-        {/* Password */}
-        <div className="flex flex-col gap-2 relative">
-          <label htmlFor="password" className="text-gray-700 text-lg">Password</label>
-          <input
-            type="password"
-            id="password"
-            className="w-full border border-gray-400 rounded-md px-4 py-2 text-base focus:outline-none focus:border-red-500"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {/* <div className="absolute right-4 bottom-[10px] cursor-pointer text-gray-600">
-            {show ? (
-              <IoMdEyeOff onClick={() => setShow(!show)} />
-            ) : (
-              <IoMdEye onClick={() => setShow(!show)}/> 
-            )}
-          </div> */}
-        </div> 
-
-        {/* Submit Button */}
-        <button
-          type="submit"
-          className="bg-red-500 hover:bg-red-600 text-white text-lg py-2 rounded-md transition duration-300"
-          disabled={loading}
+      {/* Main Content */}
+      <div className="w-full h-full flex items-center justify-center relative px-4">
+        {/* Back Button */}
+        <div
+          className="absolute top-6 left-6 bg-red-500 hover:bg-red-600 text-white p-3 rounded-full cursor-pointer "
+          onClick={() => navigate("/")}
         >
-          {loading ? "Signing up..." : "Sign Up"}
-        </button>
+          <FaArrowLeftLong className="w-5 h-5" />
+        </div>
 
-        {/* Already have an account */}
-        <p className="text-center text-gray-600">
-          Already have an account?
-          <span
-            className="text-red-500 ml-1 font-medium cursor-pointer hover:underline"
-            onClick={() => navigate("/login")}
+        {/* Signup Form */}
+        <form
+          onSubmit={handleSignUP}
+          className="bg-[#00000000] backdrop-blur-md w-full max-w-md rounded-xl shadow-2xl p-8 flex flex-col gap-6 text-black"
+        >
+          <h2 className="text-2xl font-semibold text-red-600 text-center">
+            Create Your Mehman Account
+          </h2>
+
+          {/* Username */}
+          <div className="flex flex-col gap-2">
+            <label htmlFor="name" className="text-white text-lg">Username</label>
+            <input
+              type="text"
+              id="name"
+              className="w-full border border-gray-400 rounded-md px-4 py-2 text-base focus:outline-none focus:border-red-500"
+              required
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+
+          {/* Email */}
+          <div className="flex flex-col gap-2">
+            <label htmlFor="email" className="text-white text-lg">Email</label>
+            <input
+              type="email"
+              id="email"
+              className="w-full border border-gray-400 rounded-md px-4 py-2 text-base focus:outline-none focus:border-red-500"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+
+          {/* Password */}
+          <div className="flex flex-col gap-2">
+            <label htmlFor="password" className="text-white text-lg">Password</label>
+            <input
+              type="password"
+              id="password"
+              className="w-full border border-gray-400 rounded-md px-4 py-2 text-base focus:outline-none focus:border-red-500"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="bg-red-500 hover:bg-red-600 text-white text-lg py-2 rounded-md transition duration-300"
+            disabled={loading}
           >
-            Login
-          </span>
-        </p>
-      </form>
+            {loading ? "Signing up..." : "Sign Up"}
+          </button>
+
+          {/* Already have an account */}
+          <p className="text-center text-white">
+            Already have an account?
+            <span
+              className="text-red-500 ml-1 font-medium cursor-pointer hover:underline"
+              onClick={() => navigate("/login")}
+            >
+              Login
+            </span>
+          </p>
+        </form>
+      </div>
     </div>
   );
 }
