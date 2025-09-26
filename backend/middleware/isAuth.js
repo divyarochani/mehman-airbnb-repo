@@ -1,16 +1,16 @@
 import jwt from "jsonwebtoken";
 const isAuth = async (req, res, next) => {
   try {
-    console.log(req);
-    console.log(req.cookies);
     let { token } = req.cookies;
-    console.log(token);
+
     if (!token) {
-      res.status(400).json({ message: "user doesn't have a token" });
+      return res.status(400).json({ message: "user doesn't have a token" });
     }
     let verifyToken = jwt.verify(token, process.env.JWT_SECRET);
     if (!verifyToken) {
-      res.status(400).json({ message: "user doesn't have a Validtoken" });
+      return res
+        .status(400)
+        .json({ message: "user doesn't have a Validtoken" });
     }
     req.userId = verifyToken.userId;
     next();
